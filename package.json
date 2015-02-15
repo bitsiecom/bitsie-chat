@@ -1,0 +1,23 @@
+{
+  "name": "bitsie-chat",
+  "version": "1.0.0",
+  "description": "Encrypted, anonymous chat.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitsiecom/bitsie-chat.git"
+  },
+  "author": "Bitsie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitsiecom/bitsie-chat/issues"
+  },
+  "homepage": "https://github.com/bitsiecom/bitsie-chat",
+  "dependencies": {
+    "express": "^4.11.2",
+    "socket.io": "^1.3.4"
+  }
+}
