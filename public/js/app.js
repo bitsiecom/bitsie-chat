@@ -1,7 +1,21 @@
-var socket = io();
-var room = '1PublicKeyHere';
+// @todo: replace with public/private key pair
+function createRoom()
+{
+	// generate new room id
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	for( var i=0; i < 5; i++ )
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	window.location.hash = text;
+	return text;
+}
 
-socket.emit('join', room);
+var socket = io();
+var roomId = window.location.hash.replace("#", "");
+if (!roomId) {
+	roomId = createRoom();
+}
+socket.emit('join', roomId);
 
 socket.on('chat message', function(user, message) {
 	var html = '<strong style="color:' + user.color + '">' + user.name + '</strong>: ' + message;

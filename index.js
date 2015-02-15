@@ -3,6 +3,7 @@ var express = require('express'),
 	http = require('http').createServer(app),
 	socket = require('socket.io')(http),
 	Moniker = require('moniker'),
+	path = require('path'),
 	Room = require('./lib/room.js'),
 
 	uuid = require('node-uuid');
@@ -10,7 +11,7 @@ var express = require('express'),
 app.set('port', (process.env.PORT || 5000))
 app.set("view options", {layout: false});
 app.set('views', __dirname + '/public');
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 function errorHandler(err, req, res, next) {
 	res.status(500);
@@ -42,7 +43,7 @@ Array.prototype.contains = function(k, callback) {
 	}(0));
 };
 
-app.get('/', function (req, res) {
+app.get('/:id?', function (req, res) {
 	res.render('index.html');
 })
 
@@ -80,31 +81,28 @@ socket.on('connection', function(client) {
 			room.addPerson(client.id); //also add the person to the room object
 			people[client.id].room = roomId; //update the room key with the ID of the created room
 		}
-		client.emit("update", people[client.id], " has connected to the server.");
-		socket.sockets.emit("update", people[client.id], " is online.");
-		socket.sockets.emit("update people", people);
+		var host = server.address().address;
+		var port = server.address().port;
+		var url = "http://" + host + ":" + port + "/#" + roomId;
+
+		client.emit("update", people[client.id], " has connected to <a href='" + url + "'>" + url + "</a>");
+		socket.sockets.in(roomId).emit("update", people[client.id], " is online.");
+		socket.sockets.in(roomId).emit("update people", people);
+
 		clients.push(client);
 	});
 
 	client.on("chat message", function(msg) {  
-		console.log("CHAT");
 		var user = people[client.id];
 		socket.sockets.in(user.room).emit("chat message", user, msg);
 	});
 
 	client.on("disconnect", function() {  
-		if (people[client.id]) {
-			if (people[client.id].inroom === null) {
-			socket.sockets.emit("update", people[client.id].name + " has left the chat.");
-			delete people[client.id];
-			socket.sockets.emit("update people", people);
-		} else {
-			socket.sockets.emit("update", people[client.id].name + " has left the chat.");
-			delete people[client.id];
-			socket.sockets.emit("update people", people);
-		}
-	}
-  });
+		if (people[client.id] == null) return;
+		socket.sockets.in(people[client.id].room).emit("update", people[client.id], " has left the chat.");
+		delete people[client.id];
+		socket.sockets.emit("update people", people);
+	});
 });
 
 
