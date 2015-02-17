@@ -11,7 +11,7 @@
 </head>
 <body ng-app="myApp" ng-controller="ChatController">
     <ul id="messages">
-    	<li ng-repeat="message in messages"><strong style="color: {{message.user.color}}">{{message.user.name}}</strong>: {{message.message}}</li>
+    	<li  ng-repeat="message in messages"><strong style="color: {{message.user.color}}">{{message.user.name}}</strong>: <span ng-bind-html="message.message"> {{message.message}} </span></li>
     </ul>
     <form id="form-chat" action="">
       <input id="m" autocomplete="off" /><button>Send</button>
@@ -19,7 +19,10 @@
 
     <script src="/js/jquery-1.12.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.0/angular-sanitize.min.js"></script>
+
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/js/ChatModule.js"></script>
 	<script src="/js/app.js"></script>

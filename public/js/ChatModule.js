@@ -1,4 +1,4 @@
-var bitsieChat = angular.module('myApp', []);
+var bitsieChat = angular.module('myApp', ['ngSanitize']);
 bitsieChat.controller('ChatController', ['$scope', function($scope){
 
 	var socket = io();
