@@ -1,3 +1,5 @@
+var bc = angular.module('bc', ['ngSanitize']);
+
 // @todo: replace with public/private key pair
 function createRoom()
 {

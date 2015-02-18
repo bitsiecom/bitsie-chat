@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/css/main.css" />
 
 </head>
-<body ng-app="myApp" ng-controller="ChatController">	
+<body ng-app="bc" ng-controller="ChatController">	
 	<div class="container-fluid">
 			<nav class="navbar navbar-default">
 			  <div class="container-fluid">
@@ -43,14 +43,13 @@
 
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-
-	<script src="/js/app.js"></script>
-
+    <script src="/bower_components/crypto/crypto.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="/js/ChatModule.js"></script>
+
 	<script src="/js/app.js"></script>
+	<script src="/js/services/bcrypt.js"></script>
+	<script src="/js/ChatModule.js"></script>
 </body>
 </html>

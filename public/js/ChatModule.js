@@ -1,5 +1,6 @@
-var bitsieChat = angular.module('myApp', ['ngSanitize']);
-bitsieChat.controller('ChatController', ['$scope', function($scope){
+var bc = angular.module('bc');
+
+bc.controller('ChatController', ['$scope', 'bcrypt', function($scope, bcrypt) {
 
 	var socket = io();
 	$scope.messages = [];
