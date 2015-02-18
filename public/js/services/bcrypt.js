@@ -1,20 +1,15 @@
 var bc = angular.module('bc');
 
 bc.factory('bcrypt', function() {
+
 	var bCrypt = {};
 
-	bCrypt.encrypt = function(text){
-		var cipher = crypto.createCipher(algorithm,password)
-		var crypted = cipher.update(text,'utf8','hex')
-		crypted += cipher.final('hex');
-		return crypted;
+	bCrypt.encrypt = function(text, passphrase) {
+		return CryptoJS.AES.encrypt(text, passphrase).toString();
 	}
 
-	bCrypt.decrypt = function(text){
-		var decipher = crypto.createDecipher(algorithm,password)
-		var dec = decipher.update(text,'hex','utf8')
-		dec += decipher.final('utf8');
-		return dec;
+	bCrypt.decrypt = function(encrypted, passphrase) {
+		return CryptoJS.AES.decrypt(encrypted, passphrase).toString(CryptoJS.enc.Utf8);
 	}
 
 	return bCrypt;

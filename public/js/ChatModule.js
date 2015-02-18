@@ -1,10 +1,16 @@
 var bc = angular.module('bc');
 
-bc.controller('ChatController', ['$scope', 'bcrypt', function($scope, bcrypt) {
+bc.controller('ChatController', ['$scope', 'room', 'bcrypt', function($scope, room, bcrypt) {
+
+	var encrypted = bcrypt.encrypt("Hello world", "pass");
+	console.log(encrypted);
+
+	var dec = bcrypt.decrypt(encrypted, "pass");
+	console.log(dec);
 
 	var socket = io();
 	$scope.messages = [];
-	socket.emit('join', roomId);
+	socket.emit('join', room.id);
 	socket.on('chat message', function(user, message) {
 		$scope.$apply(function(){
 			$scope.messages.push({user: user, message: message});
