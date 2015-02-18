@@ -16,14 +16,14 @@
 			<nav class="navbar navbar-default">
 			  <div class="container-fluid">
 			  	<div class="navbar-header">
-			  		<a class="navbar-brand" href="#"><span>BITSIE:</span>CHAT</a>
+			  		<a class="navbar-brand" href="#"><span>BITSIE</span>CHAT</a>
 			  	</div>
 			  </div>
 			</nav>
 
 		    <ul id="messages" class="col-xs-12">
 		    	<li  ng-repeat="message in messages" class="col-xs-12">
-		    		<span><i class="fa fa-user" style="color: {{message.user.color}}"></i>&nbsp;&nbsp; <strong style="color: {{message.user.color}}">{{message.user.name}}</strong></span> 
+		    		<span><i class="fa fa-circle" style="color: {{message.user.color}}"></i>&nbsp;&nbsp; <strong style="color: {{message.user.color}}">{{message.user.name}}</strong></span> 
 
 		    		<span class="message-container" ng-bind-html="message.message"> {{message.message}} </span>
 		    		<span class="clearfix"></span>

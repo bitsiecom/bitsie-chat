@@ -6,8 +6,8 @@ body{
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	font-family: 'Droid Sans', sans-serif;
-	background: #333;
+	font-family: 'Montserrat Regular', sans-serif;
+	background: #fff;
 }
 body { font: 13px Helvetica, Arial; }
 form { background: #000; 
@@ -31,22 +31,28 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 	width: 100%;
 }
 .navbar {
-	background: #F3911D;
+	background: #000;
 	border-radius: 0px;
+	border: 0px;
 	margin-bottom: 0;
 }
 .navbar .navbar-brand {
-	font-family: 'Droid Sans', sans-serif;	
+	font-family: 'Montserrat Bold', sans-serif;	
+	font-weight: bold;
 	color: white;
 	padding-left: 30px;
 	display: block;
+	background: url(../img/BitsieChat_brand_bg.jpg) repeat-y;
+	background-position: 10px 0px;
 }
 .navbar .navbar-brand span {
 	color: #ececec;
+	margin-right: 30px;
 }
 .message-container {
 }
 .btn {
-	font-family: 'Droid Sans', sans-serif;
+	font-family: 'Montserrat Bold', sans-serif;
 	text-transform: uppercase;
+	color: white;
 }
