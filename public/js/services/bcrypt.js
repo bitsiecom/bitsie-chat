@@ -6,11 +6,11 @@ bc.factory('bcrypt', function() {
 
 	bCrypt.encrypt = function(text, passphrase) {
 		return CryptoJS.AES.encrypt(text, passphrase).toString();
-	}
+	};
 
 	bCrypt.decrypt = function(encrypted, passphrase) {
 		return CryptoJS.AES.decrypt(encrypted, passphrase).toString(CryptoJS.enc.Utf8);
-	}
+	};
 
 	return bCrypt;
 });

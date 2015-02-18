@@ -1,13 +1,14 @@
 var bc = angular.module('bc');
 
-bc.controller('ChatController', ['$scope', 'room', 'bcrypt', function($scope, room, bcrypt) {
+bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$window', 
+	function($scope, room, bcrypt, websocket, $window) {
 
-	var passphrase = prompt("Enter your passphrase: ");
+	var passphrase = $window.prompt("Enter your passphrase: ");
 	
-	var socket = io();
+	var socket = websocket();
 	$scope.messages = [];
 	socket.emit('join', room.id);
-	
+
 	socket.on('chat message', function(user, message) {
 		var decrypted = bcrypt.decrypt(message, passphrase);
 		if (message && !decrypted) decrypted = '[unable to decrypt message -- verify passphrase]';
