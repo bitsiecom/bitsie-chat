@@ -12,6 +12,7 @@ app.set('port', (process.env.PORT || 5000))
 app.set("view options", {layout: false});
 app.set('views', __dirname + '/public');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 function errorHandler(err, req, res, next) {
 	res.status(500);
