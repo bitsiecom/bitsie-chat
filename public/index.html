@@ -23,18 +23,18 @@
 
 		    <ul id="messages" class="col-xs-12">
 		    	<li  ng-repeat="message in messages" class="col-xs-12">
-		    		<span class="col-xs-2"><i class="fa fa-user" style="color: {{message.user.color}}"></i>&nbsp;&nbsp; <strong style="color: {{message.user.color}}">{{message.user.name}}</strong>:</span> 
+		    		<span><i class="fa fa-user" style="color: {{message.user.color}}"></i>&nbsp;&nbsp; <strong style="color: {{message.user.color}}">{{message.user.name}}</strong></span> 
 
-		    		<span class="col-xs-6 message-container" ng-bind-html="message.message"> {{message.message}} </span>
+		    		<span class="message-container" ng-bind-html="message.message"> {{message.message}} </span>
 		    		<span class="clearfix"></span>
 		    	</li>
 		    </ul>
 		    <form id="form-chat" class="form" action="">
 		      <div class="form-group">
-		      	<div class="col-xs-10">
+		      	<div class="col-xs-8 col-md-10">
 		      		<input id="m" class="form-control" autocomplete="off" />
 		      	</div>
-		      	<div class="col-xs-2">
+		      	<div class="col-xs-4 col-md-2">
 		      		<button class="btn btn-success btn-block">Send</button>
 		      	</div>
 		      </div>		      
