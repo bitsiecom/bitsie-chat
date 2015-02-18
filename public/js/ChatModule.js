@@ -7,6 +7,7 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', function($scope, ro
 	var socket = io();
 	$scope.messages = [];
 	socket.emit('join', room.id);
+	
 	socket.on('chat message', function(user, message) {
 		var decrypted = bcrypt.decrypt(message, passphrase);
 		if (message && !decrypted) decrypted = '[unable to decrypt message -- verify passphrase]';

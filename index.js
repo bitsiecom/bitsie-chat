@@ -91,9 +91,6 @@ socket.on('connection', function(client) {
 		}
 		var host = server.address().address;
 		var port = server.address().port;
-		var url = "http://" + host + ":" + port + "/#" + roomId;
-
-		client.emit("update", people[client.id], " has connected to <a href='" + url + "'>" + url + "</a>");
 		socket.sockets.in(roomId).emit("update", people[client.id], " is online.");
 		socket.sockets.in(roomId).emit("update people", people);
 
