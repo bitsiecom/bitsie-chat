@@ -5,17 +5,42 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <title>Bitsie Chat</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/main.css" />
 
 </head>
-<body ng-app="myApp" ng-controller="ChatController">
-    <ul id="messages">
-    	<li  ng-repeat="message in messages"><strong style="color: {{message.user.color}}">{{message.user.name}}</strong>: <span ng-bind-html="message.message"> {{message.message}} </span></li>
-    </ul>
-    <form id="form-chat" action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+<body ng-app="myApp" ng-controller="ChatController">	
+	<div class="container-fluid">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			  	<div class="navbar-header">
+			  		<a class="navbar-brand" href="#"><span>BITSIE:</span>CHAT</a>
+			  	</div>
+			  </div>
+			</nav>
+
+		    <ul id="messages" class="col-xs-12">
+		    	<li  ng-repeat="message in messages" class="col-xs-12">
+		    		<span class="col-xs-2"><i class="fa fa-user" style="color: {{message.user.color}}"></i>&nbsp;&nbsp; <strong style="color: {{message.user.color}}">{{message.user.name}}</strong>:</span> 
+
+		    		<span class="col-xs-6 message-container" ng-bind-html="message.message"> {{message.message}} </span>
+		    		<span class="clearfix"></span>
+		    	</li>
+		    </ul>
+		    <form id="form-chat" class="form" action="">
+		      <div class="form-group">
+		      	<div class="col-xs-10">
+		      		<input id="m" class="form-control" autocomplete="off" />
+		      	</div>
+		      	<div class="col-xs-2">
+		      		<button class="btn btn-success btn-block">Send</button>
+		      	</div>
+		      </div>		      
+		    </form>
+	</div>
+	<div class="dimmer"></div>
 
     <script src="/js/jquery-1.12.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

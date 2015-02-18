@@ -23,7 +23,14 @@ app.use(errorHandler);
 
 //-------- ACTIONS ----------------
 function getColor() {
-	return '#'+Math.floor(Math.random()*8777215).toString(16);
+
+	var H = Math.floor(Math.random()*255).toString();
+	var S = Math.floor(Math.random()*50) + 50;
+	var L = Math.floor((Math.random()*10) + (Math.random()*50)) ;
+	var a = 1;
+
+	return "hsla(" + H + "," + S + "%," + L + "%," + a + ")";
+	//return '#'+Math.floor(Math.random()*8777215).toString(16);
 }
 
 var names = Moniker.generator([Moniker.adjective, Moniker.verb, Moniker.noun], { glue: ' ' });
