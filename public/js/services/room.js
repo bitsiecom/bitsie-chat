@@ -1,6 +1,6 @@
 var bc = angular.module('bc');
 
-bc.factory('room', ['$location', function($location) {
+bc.factory('room', ['$window', function($window) {
 
 	var room = {};
 
@@ -11,11 +11,11 @@ bc.factory('room', ['$location', function($location) {
 		var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 		for( var i=0; i < 5; i++ )
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
-		window.location.hash = text;
+		$window.location.hash = text;
 		return text;
 	}
 
-	var roomId = window.location.hash.replace("#", "");
+	var roomId = $window.location.hash.replace("#", "");
 	if (!roomId) {
 		roomId = createRoom();
 	}

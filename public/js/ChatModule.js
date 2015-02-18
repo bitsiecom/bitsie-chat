@@ -2,18 +2,25 @@ var bc = angular.module('bc');
 
 bc.controller('ChatController', ['$scope', 'room', 'bcrypt', function($scope, room, bcrypt) {
 
-	var encrypted = bcrypt.encrypt("Hello world", "pass");
-	console.log(encrypted);
-
-	var dec = bcrypt.decrypt(encrypted, "pass");
-	console.log(dec);
+	var passphrase = "The Monkey kicked the Unicorn and caused a Ri0t in the streets.";
+	
+	var decrypt = function(msg) {
+		var decrypted;
+		try {
+			decrypted = bcrypt.decrypt(msg, passphrase);
+		} catch(ex) {
+			decrypted = '[unable to decrypt message -- verify your passphrase]';
+		}
+		return decrypted;
+	}
 
 	var socket = io();
 	$scope.messages = [];
 	socket.emit('join', room.id);
 	socket.on('chat message', function(user, message) {
+		console.log('chat msg');
 		$scope.$apply(function(){
-			$scope.messages.push({user: user, message: message});
+			$scope.messages.push({user: user, message: decrypt(message)});
 		});
 	});
 
@@ -31,7 +38,8 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', function($scope, ro
 
 	$('#form-chat').submit(function(e) {
 		e.preventDefault();
-		socket.emit('chat message', $('#m').val());
+		var msg = bcrypt.encrypt($('#m').val(), passphrase);
+		socket.emit('chat message', msg);
 		$('#m').val('');
 	});
 
