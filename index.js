@@ -35,7 +35,7 @@ function getColor() {
 }
 
 var names = Moniker.generator([Moniker.adjective, Moniker.verb, Moniker.noun], { glue: ' ' });
-var people = [];
+var people = {};
 var rooms = [];
 var clients = [];
 Array.prototype.contains = function(k, callback) {  
@@ -92,6 +92,9 @@ socket.on('connection', function(client) {
 		var host = server.address().address;
 		var port = server.address().port;
 		socket.sockets.in(roomId).emit("update", people[client.id], " is online.");
+
+		console.log("Emmitting to " + roomId);
+		console.log(people);
 		socket.sockets.in(roomId).emit("update people", people);
 
 		clients.push(client);
