@@ -32,26 +32,31 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 	overflow-x: hidden;
 }
 .navbar {
-	background: #000;
+	background: #000 url(../img/BitsieChat_brand_bg.jpg) repeat-y;
 	border-radius: 0px;
 	border: 0px;
 	margin-bottom: 0;
+	background-position: 0px 5px;
 }
 .navbar .navbar-brand {
 	font-family: 'Montserrat Bold', sans-serif;	
 	font-weight: bold;
 	color: white;
-	padding-left: 30px;
+	padding-left: 35px;
 	display: block;
-	background: url(../img/BitsieChat_brand_bg.jpg) repeat-y;
-	background-position: 10px 0px;
+	margin-top: 5px;
 }
 .navbar .navbar-brand span {
 	color: #ececec;
 	margin-right: 30px;
 }
 .navbar .navbar-right {
-	margin:15px 30px 0 0;
+	margin: 0px 30px 0 0;
+	overflow: hidden;
+}
+.navbar .navbar-right li.person a{
+	padding-right: 2px;
+	padding-left: 2px;
 }
 .message-container {
 }
@@ -59,4 +64,43 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 	font-family: 'Montserrat Bold', sans-serif;
 	text-transform: uppercase;
 	color: white;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+	background: #333;
+}
+.navbar-default .navbar-nav>li>a:hover {
+	background: #333;
+}
+li.person {
+	margin-left: 5px;
+}
+li.encryption {
+	margin-left: 25px;
+}
+li.encryption.active {
+	background: #333;
+}
+.encryption-menu {
+	background: #333;
+	position: absolute;
+	width: 25%;
+	display: none;
+	right: 0;
+	top: 59px;
+	padding: 10px;
+	z-index: 9999;
+	color: white;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-left-radius: 5px;
+}
+.encryption-menu input {
+	color: black;
+}
+.encryption-menu h4 {
+	font-size: 1.2em;
+}
+.encryption-menu button {
+	margin-top: 10px;
 }
