@@ -23,7 +23,7 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', function($scope, ro
 	});
 
 	socket.on('update people', function(people) {
-		for(var i = 0; i < people.length; i++) {
+		for(var i in people) {
 			console.log(people[i]);
 		}
 	});
