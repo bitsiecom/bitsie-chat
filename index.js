@@ -93,8 +93,6 @@ socket.on('connection', function(client) {
 		var port = server.address().port;
 		socket.sockets.in(roomId).emit("update", people[client.id], " is online.");
 
-		console.log("Emmitting to " + roomId);
-		console.log(people);
 		socket.sockets.in(roomId).emit("update people", people);
 
 		clients.push(client);
