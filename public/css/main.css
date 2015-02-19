@@ -29,6 +29,7 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	overflow-x: hidden;
 }
 .navbar {
 	background: #000;
@@ -48,6 +49,9 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 .navbar .navbar-brand span {
 	color: #ececec;
 	margin-right: 30px;
+}
+.navbar .navbar-right {
+	margin:15px 30px 0 0;
 }
 .message-container {
 }

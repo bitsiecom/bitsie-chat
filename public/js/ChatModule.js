@@ -6,6 +6,7 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', function($scope, ro
 	
 	var socket = io();
 	$scope.messages = [];
+	$scope.users = [];
 	socket.emit('join', room.id);
 	
 	socket.on('chat message', function(user, message) {
@@ -22,11 +23,24 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', function($scope, ro
 		});
 	});
 
+
 	socket.on('update people', function(people) {
+		checkUser(people);
 		for(var i = 0; i < people.length; i++) {
-			console.log(people[i]);
 		}
 	});
+
+	function checkUser(user){
+		var addToArray = true;
+		for(var u = 0; u < $scope.users.length - 1; u++){
+			if(user.name == $scope.users[u].name){
+				addToArray = false;
+			}			
+		}
+		if(addToArray == true){
+			$scope.users.push(user);
+		}
+	}
 
 	$('#form-chat').submit(function(e) {
 		e.preventDefault();
