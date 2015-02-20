@@ -3,7 +3,9 @@ var bc = angular.module('bc');
 bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$window', 
 	function($scope, room, bcrypt, websocket, $window) {
 
-	var passphrase = $window.prompt("Enter your passphrase: ");
+	var passphrase = 'test';
+
+	$("#intro-modal").modal('show');
 	
 	var socket = websocket();
 	$scope.messages = [];
@@ -11,14 +13,15 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$wind
 	$scope.passphrase = passphrase;
 	socket.emit('join', room.id);
 
-	socket.emit('update passphrase', passphrase);
 	socket.on('update passphrase', function(passphrase){
 		$scope.$apply(function(){
+			console.log("applying");
 			$scope.passphrase = passphrase;
 		});
 	});
 
 	socket.on('chat message', function(user, message) {
+		console.log("hits");
 		var decrypted = bcrypt.decrypt(message, passphrase);
 		if (message && !decrypted) decrypted = '[unable to decrypt message -- verify passphrase]';
 		$scope.$apply(function(){
@@ -56,5 +59,10 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$wind
 		$(".encryption-menu").toggle();
 	});
 
+	 $(".passphrase-submit").click(function(e){
+	 	console.log("submitted");
+		socket.emit("update passphrase", $(".intro-passphrase").val());
+		$("#intro-modal").hide();
+	}); 
 
 }]);

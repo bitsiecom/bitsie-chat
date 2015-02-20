@@ -104,3 +104,52 @@ li.encryption.active {
 .encryption-menu button {
 	margin-top: 10px;
 }
+#intro-modal {
+	color: white;
+}
+#intro-modal .modal-content {
+	font-family: "Montserrat", "Arial", sans-serif;
+	background: #f7931a; /* Old browsers */
+	background: -moz-linear-gradient(top,  #f7931a 0%, #f48200 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7931a), color-stop(100%,#f48200)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #f7931a 0%,#f48200 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #f7931a 0%,#f48200 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #f7931a 0%,#f48200 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #f7931a 0%,#f48200 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7931a', endColorstr='#f48200',GradientType=0 ); /* IE6-9 */
+	min-height: 100%;
+}
+#intro-modal .modal-content h3 {
+	margin-bottom: 0;
+	padding: 0;
+}
+#intro-modal .modal-content h4 {
+	margin: 5 0 25px 0;
+	padding: 0;
+	color: black;
+}
+#intro-modal .modal-content p {
+	line-height: 1.3em;
+}
+#intro-modal .modal-content .modal-body {
+	display: table;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#intro-modal .modal-content .modal-body>div {
+	display: table-cell;
+}
+#intro-modal .modal-content .left-side {
+	border-right : 1px solid white;
+}
+#intro-modal .modal-content .right-side{
+	padding-top: 30px;
+	padding-bottom: 5px;
+	height: 100%;
+	display: block;
+	position: relative;
+	margin-top: 10%;
+}
+#intro-modal .modal-content .right-side button{
+	margin-top: 5px;
+}
