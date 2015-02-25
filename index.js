@@ -5,10 +5,9 @@ var express = require('express'),
 	Moniker = require('moniker'),
 	path = require('path'),
 	Room = require('./lib/room.js'),
-
 	uuid = require('node-uuid');
 
-app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 5050))
 app.set("view options", {layout: false});
 app.set('views', __dirname + '/public');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -93,7 +92,6 @@ socket.on('connection', function(client) {
 		var host = server.address().address;
 		var port = server.address().port;
 		socket.sockets.in(roomId).emit("update", people[client.id], " is online.");
-
 		socket.sockets.in(roomId).emit("update people", people);
 
 		clients.push(client);
@@ -102,6 +100,11 @@ socket.on('connection', function(client) {
 	client.on("chat message", function(msg) {  
 		var user = people[client.id];
 		socket.sockets.in(user.room).emit("chat message", user, msg);
+	});
+
+	client.on("update passphrase", function(passphrase){
+		var user = people[client.id];
+		socket.sockets.in(user.room).emit("update passphrase", passphrase);
 	});
 
 	client.on("disconnect", function() {  
@@ -119,3 +122,4 @@ var server = http.listen(app.get('port'), function () {
 	var port = server.address().port
 	console.log('App is listening at http://%s:%s', host, port)
 });
+

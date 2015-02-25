@@ -22,17 +22,17 @@
 			  	</div>
 			  	<ul class="nav navbar-nav navbar-right">			  				  	
 			  		<li class="person" ng-repeat="person in people"><a href="#"><i class="fa fa-circle fa-2x" style="color: {{person.color}}"></i></a></li>
-			  		<li class="encryption"><a href="#"><i class="fa fa-lock fa-2x" style="color: #fff"></i></a></li>
+			  		<li class="encryption"><a ng-click="custom=!custom"><i class="fa fa-lock fa-2x" style="color: #fff"></i></a></li>
 			  	</ul>			  	
 			  </div>			  
 			</nav>
 
-			<div class="encryption-menu menu-dropdown">
+			<div class="encryption-menu menu-dropdown" ng-hide="!custom">
 				<h4>ENCRYPTION</h4>
-				<p>lorem ipsum dolor set amit febian un yun tu nunt gunto rustin. Pe kialo gumjunt ruest furtigs</p>
+				<p>Enter in a passphrase on the right to begin your chat session. Anyone with this passphrase, within your room, will be able to read your messages. If someone joins the room with a different passphrase, then they will be unable to read the chats or write to the others in the chat room. You can change the passphrase at any time with the Encryption menu accessed in the upper right hand menu.</p>
 				<div class="form-group">
-					<input class="form-control passphrase-input" value="{{passphrase}}"/>
-					<button class="encryption-submit btn btn-success btn-block"> SUBMIT</button>
+					<input class="form-control passphrase-input" ng-model="passphrase" value="{{passphrase}}"/>
+					<button ng-click="updatePassphrase('test');custom=!custom" class="encryption-submit btn btn-success btn-block"> SUBMIT</button>
 				</div>
 			</div>
 
@@ -56,30 +56,10 @@
 		    </form>
 	</div>
 
-	<div id="intro-modal" class="modal fade">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-body">
-	      	<div class="col-xs-6 left-side">
-	      		<h3>Welcome to Bitsie Chat</h3>
-	        	<h4>Anonymous, encrypted chat <br/>in your browser</h4>
-	        	<p>Enter in a passphrase on the right to begin your chat session. Anyone with this passphrase, within your room, will be able to read your messages. If someone joins the room with a different passphrase, then they will be unable to read the chats or write to the others in the chat room. You can change the passphrase at any time with the Encryption menu accessed in the upper right hand menu.</p>
-	      	</div>
-	      	<div class="col-xs-6 right-side">
-	      		<h4>Enter your passphrase</h4>
-	      		<input class="intro-passphrase form-control" value="" />
-	      		<button class="passphrase-submit btn btn-success btn-block">Submit</button>
-	      	</div>
-	      	<div class="clearfix"></div>
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-
-
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="/js/aes.js"></script>
 	<script src="/socket.io/socket.io.js"></script>

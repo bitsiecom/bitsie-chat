@@ -1,5 +1,3 @@
-
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html,
 body{
@@ -9,6 +7,22 @@ body{
 	font-family: 'Montserrat Regular', sans-serif;
 	background: #fff;
 }
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+.modal {
+display: block;
+}
+
+.modal-backdrop {
+  bottom: 0;
+}
+
 body { font: 13px Helvetica, Arial; }
 form { background: #000; 
 	   padding: 10px 0 10px 0px; 
@@ -72,10 +86,16 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 .navbar-default .navbar-nav>li>a:hover {
 	background: #333;
 }
+.navbar-default .navbar-nav>li.person>a:hover {
+	background: none;
+	cursor:default;
+}
 li.person {
+	cursor: default;
 	margin-left: 5px;
 }
 li.encryption {
+	cursor: pointer;
 	margin-left: 25px;
 }
 li.encryption.active {
@@ -85,7 +105,6 @@ li.encryption.active {
 	background: #333;
 	position: absolute;
 	width: 25%;
-	display: none;
 	right: 0;
 	top: 59px;
 	padding: 10px;
@@ -104,10 +123,10 @@ li.encryption.active {
 .encryption-menu button {
 	margin-top: 10px;
 }
-#intro-modal {
+.intro-modal {
 	color: white;
 }
-#intro-modal .modal-content {
+.intro-modal .modal-content {
 	font-family: "Montserrat", "Arial", sans-serif;
 	background: #f7931a; /* Old browsers */
 	background: -moz-linear-gradient(top,  #f7931a 0%, #f48200 100%); /* FF3.6+ */
@@ -119,30 +138,30 @@ li.encryption.active {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7931a', endColorstr='#f48200',GradientType=0 ); /* IE6-9 */
 	min-height: 100%;
 }
-#intro-modal .modal-content h3 {
+.intro-modal .modal-content h3 {
 	margin-bottom: 0;
 	padding: 0;
 }
-#intro-modal .modal-content h4 {
+.intro-modal .modal-content h4 {
 	margin: 5 0 25px 0;
 	padding: 0;
 	color: black;
 }
-#intro-modal .modal-content p {
+.intro-modal .modal-content p {
 	line-height: 1.3em;
 }
-#intro-modal .modal-content .modal-body {
+.intro-modal .modal-content .modal-body {
 	display: table;
 	-moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-#intro-modal .modal-content .modal-body>div {
+.intro-modal .modal-content .modal-body>div {
 	display: table-cell;
 }
-#intro-modal .modal-content .left-side {
+.intro-modal .modal-content .left-side {
 	border-right : 1px solid white;
 }
-#intro-modal .modal-content .right-side{
+.intro-modal .modal-content .right-side{
 	padding-top: 30px;
 	padding-bottom: 5px;
 	height: 100%;
@@ -150,6 +169,11 @@ li.encryption.active {
 	position: relative;
 	margin-top: 10%;
 }
-#intro-modal .modal-content .right-side button{
+.intro-modal .modal-content .right-side button{
 	margin-top: 5px;
+}
+.modal-backdrop {
+    bottom: 0;
+    /* some fixes appear to use this, too: */
+    position: fixed;
 }

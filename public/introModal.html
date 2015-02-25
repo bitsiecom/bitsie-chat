@@ -1,0 +1,20 @@
+<div ng-controller="ChatController" >
+    <script type="text/ng-template" id="introModal.html">
+         <div class="modal-body">
+	      	<div class="col-xs-6 left-side">
+	      		<h3>Welcome to Bitsie Chat</h3>
+	        	<h4>Anonymous, encrypted chat <br/>in your browser</h4>
+	        	<p>Enter in a passphrase on the right to begin your chat session. Anyone with this passphrase, within your room, will be able to read your messages. If someone joins the room with a different passphrase, then they will be unable to read the chats or write to the others in the chat room. You can change the passphrase at any time with the Encryption menu accessed in the upper right hand menu.</p>
+	      	</div>
+	      	<div class="col-xs-6 right-side">
+	      		<h4>Enter your passphrase</h4>
+	      		<input ng-model="$parent.passphrase" class="intro-passphrase form-control" value="{{$parent.passphrase}}" />
+	      		<button ng-click="submitPassphrase($parent.passphrase)" class="passphrase-submit btn btn-success btn-block">Submit</button>
+	      	</div>
+	      	<div class="clearfix"></div>
+	      </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</div>
