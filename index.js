@@ -7,7 +7,7 @@ var express = require('express'),
 	Room = require('./lib/room.js'),
 	uuid = require('node-uuid');
 
-app.set('port', (process.env.PORT || 5050))
+app.set('port', (process.env.PORT || 5000))
 app.set("view options", {layout: false});
 app.set('views', __dirname + '/public');
 app.use(express.static(path.join(__dirname, 'public')));
