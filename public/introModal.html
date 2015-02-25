@@ -7,14 +7,12 @@
 	        	<p>Enter in a passphrase on the right to begin your chat session. Anyone with this passphrase, within your room, will be able to read your messages. If someone joins the room with a different passphrase, then they will be unable to read the chats or write to the others in the chat room. You can change the passphrase at any time with the Encryption menu accessed in the upper right hand menu.</p>
 	      	</div>
 	      	<div class="col-xs-6 right-side">
-	      		<h4>Enter your passphrase</h4>
-	      		<input ng-model="$parent.passphrase" class="intro-passphrase form-control" value="{{$parent.passphrase}}" />
-	      		<button ng-click="submitPassphrase($parent.passphrase)" class="passphrase-submit btn btn-success btn-block">Submit</button>
+
+	      		<input placeholder="The name others will see" ng-model="$parent.username" class="intro-username form-control" value="{{$parent.username}}" />
+	      		<input placeholder="Encryption passphrase" ng-model="$parent.passphrase" class="intro-passphrase form-control" value="{{$parent.passphrase}}" />
+	      		<button ng-click="startChat($parent.passphrase, $parent.username)" class="passphrase-submit btn btn-success btn-block">Submit</button>
 	      	</div>
 	      	<div class="clearfix"></div>
 	      </div>
-        <div class="modal-footer">
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
     </script>
 </div>

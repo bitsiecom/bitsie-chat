@@ -75,6 +75,7 @@ socket.on('connection', function(client) {
 			"color" : getColor()
 		};
 
+
 		var room = rooms[roomId];
 		if (room != null) {
 			// room exists
@@ -105,6 +106,11 @@ socket.on('connection', function(client) {
 	client.on("update passphrase", function(passphrase){
 		var user = people[client.id];
 		socket.sockets.in(user.room).emit("update passphrase", passphrase);
+	});
+
+	client.on("update username", function(username){
+		people[client.id].name = username;
+		socket.sockets.emit("update people", people);
 	});
 
 	client.on("disconnect", function() {  

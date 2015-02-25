@@ -123,6 +123,11 @@ li.encryption.active {
 .encryption-menu button {
 	margin-top: 10px;
 }
+.encryption-menu p {
+	font-size: .9em;
+	line-height: 1.3em;
+	margin-bottom: 10px;
+}
 .intro-modal {
 	color: white;
 }
@@ -162,18 +167,16 @@ li.encryption.active {
 	border-right : 1px solid white;
 }
 .intro-modal .modal-content .right-side{
-	padding-top: 30px;
+	padding-top: 20px;
 	padding-bottom: 5px;
 	height: 100%;
 	display: block;
 	position: relative;
 	margin-top: 10%;
 }
-.intro-modal .modal-content .right-side button{
+.intro-modal .modal-content .right-side input{
 	margin-top: 5px;
 }
-.modal-backdrop {
-    bottom: 0;
-    /* some fixes appear to use this, too: */
-    position: fixed;
+.intro-modal .modal-content .right-side button{
+	margin-top: 5px;
 }
