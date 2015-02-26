@@ -22,8 +22,9 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 		if (message && !decrypted) decrypted = '[unable to decrypt message -- verify passphrase]';
 		$scope.$apply(function(){
 			$scope.messages.push({user: user, message: decrypted});
-			var objDiv = document.getElementById("messages");
-			objDiv.scrollTop = objDiv.scrollHeight;
+			var messageBox = document.getElementById("messages");
+			var isScrolledToBottom = messageBox.scrollHeight - messageBox.clientHeight <= messageBox.scrollTop + 1;
+    		messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight;
 		});
 	});
 

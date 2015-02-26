@@ -17,17 +17,21 @@
 			  <div class="container-fluid">
 			  	<div class="navbar-header">
 			  		<a class="navbar-brand" href="#"><span>BITSIE</span>CHAT</a>
-			  		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#subnav">
-        			<span class="sr-only">Toggle navigation</span>
+			  		<button type="button" class="navbar-toggle collapsed subnav-button" data-toggle="collapse" data-target="#subnav">
+        			<span class="sr-only">Toggle Navigation</i></span>
+        			<span class="icon-bar"></span>
+        			</button >
 			  	</div>
-			  	<ul class="nav navbar-nav navbar-right">			  				  	
-			  		<li class="person" ng-repeat="person in people"><a href="#"><i class="fa fa-circle fa-2x" style="color: {{person.color}}"></i></a></li>
-			  		<li class="encryption"><a ng-click="custom=!custom; updatePassphrase('no')"><i class="fa fa-lock fa-2x" style="color: #fff"></i></a></li>
-			  	</ul>			  	
+			  	 <div class="collapse navbar-collapse" id="subnav">
+				  	<ul class="nav navbar-nav navbar-right">			  				  	
+				  		<li class="person" ng-repeat="person in people"><a href="#"><i class="fa fa-circle fa-2x" style="color: {{person.color}}"></i></a></li>
+				  		<li class="encryption"><a ng-click="custom=!custom; updatePassphrase('no')"><i class="fa fa-lock fa-2x" style="color: #fff"></i></a></li>
+				  	</ul>			  	
+			  	 </div>
 			  </div>			  
 			</nav>
 
-			<div class="encryption-menu menu-dropdown" ng-hide="!custom">
+			<div class="encryption-menu menu-dropdown" ng-hide="!custom" ng-cloak>
 				<h4>ENCRYPTION</h4>
 				<p>Enter in a passphrase on the right to begin your chat session. Anyone with this passphrase, within your room, will be able to read your messages. If someone joins the room with a different passphrase, then they will be unable to read the chats or write to the others in the chat room. You can change the passphrase at any time with the Encryption menu accessed in the upper right hand menu.</p>
 				<div class="form-group">
@@ -37,7 +41,7 @@
 			</div>
 
 		    <ul id="messages" class="col-xs-12">
-		    	<li  ng-repeat="message in messages" class="col-xs-12">
+		    	<li  ng-repeat="message in messages" class="col-xs-12" ng-cloak>
 		    		<span><i class="fa fa-circle" style="color: {{message.user.color}}"></i>&nbsp;&nbsp; <strong style="color: {{message.user.color}}">{{message.user.name}}</strong></span> 
 
 		    		<span class="message-container" ng-bind-html="message.message"> {{message.message}} </span>
@@ -64,9 +68,9 @@
 				        	<p>Enter in a passphrase on the right to begin your chat session. Anyone with this passphrase, within your room, will be able to read your messages. If someone joins the room with a different passphrase, then they will be unable to read the chats or write to the others in the chat room. You can change the passphrase at any time with the Encryption menu accessed in the upper right hand menu.</p>
 				      	</div>
 				      	<div class="col-xs-6 right-side">
-				      		<input placeholder="Display Name" ng-model="username" class="intro-username form-control" value="{{username}}" />
-				      		<input placeholder="Encryption Passphrase" ng-model="passphrase" class="intro-passphrase form-control" value="{{passphrase}}" />
-				      		<button ng-click="startChat(passphrase, username)" class="passphrase-submit btn btn-success btn-block">Submit</button>
+				      		<input placeholder="Display Name" ng-model="username" class="intro-username form-control" value="{{username}}" ng-cloak/>
+				      		<input placeholder="Encryption Passphrase" ng-model="passphrase" class="intro-passphrase form-control" value="{{passphrase}}" ng-cloak/>
+				      		<button ng-click="startChat(passphrase, username)" class="passphrase-submit btn btn-success btn-block" >Submit</button>
 				      	</div>
 				      	<div class="clearfix"></div>
 			      </div>
