@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "homepage": "https://github.com/bitsiecom/bitsie-chat",
   "authors": [
-    "Joshua Riddle <josh@bitsie.com>"
+    "Joshua Riddle <josh@bitsie.com>",
+    "Brent Hoffmann <brent@bitsie.com>"
   ],
   "moduleType": [
     "node"

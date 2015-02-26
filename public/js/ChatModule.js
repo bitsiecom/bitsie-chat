@@ -1,7 +1,7 @@
 var bc = angular.module('bc');
 
-bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$window', '$modal', '$log',
-	function($scope, room, bcrypt, websocket, $window, $modal, $log) {
+bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', 'userInfo', 'modalProvider', '$window', '$modal', '$log',
+	function($scope, room, bcrypt, websocket, userInfo, modalProvider, $window, $modal, $log) {
 
 	var socket = websocket();
 	$scope.messages = [];
@@ -33,7 +33,7 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$wind
 	socket.on('update people', function(people) {
 		$scope.$apply(function(){
 			$scope.people = people;	
-		})
+		});
 	});
 
 	$('#form-chat').submit(function(e) {
@@ -49,46 +49,23 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$wind
 	});
 
 	$scope.updatePassphrase = function(passphrase){
-		socket.emit("update passphrase", passphrase);
-	}
+		userInfo.setPassphrase(passphrase);
+		$scope.passphrase = passphrase;
+	};
 
+	modalProvider.openPopupModal("large");
 	 //open a modal when the user comes to the page to enter in the encryption passphrase
-	 this.openModal = function (size) {
-
-    	var modalInstance = $modal.open({
-	      templateUrl: 'introModal.html',
-	      controller: 'ModalInstanceCtrl',
-	      keyboard: false,
-	      size: size,
-	      scope: $scope,
-	      windowClass: 'intro-modal'
-	    });
-
-	    modalInstance.result.then(function (data) {
-	    	$('.modal-backdrop').hide();
-	    	socket.emit("update username", data.username);
-	    	socket.emit("update passphrase", data.passphrase);
-	    }, function () {
-	    	socket.emit("update passphrase", "");
-	    	$('.modal-backdrop').hide();
-	      $log.info('Modal dismissed at: ' + new Date());
-	    });
-	  };
-
-	  this.openModal("large");
 
 }]);
 
-//controller for angular modal when first entering room
- bc.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
 
+
+ bc.controller('ModalInstanceController', function ($scope, $modalInstance) {
   	$scope.startChat = function(passphraseInput, username){
-  		var data = {"passphrase" : passphraseInput, "username": username};
   		//pass the passphrase ander username into controller result on close
+  		var data = {"passphrase" : passphraseInput, "username": username};
   		$modalInstance.close(data);
   	};
-
-  	$scope.dismiss
   	
 });
 

@@ -94,18 +94,12 @@ socket.on('connection', function(client) {
 		var port = server.address().port;
 		socket.sockets.in(roomId).emit("update", people[client.id], " is online.");
 		socket.sockets.in(roomId).emit("update people", people);
-
 		clients.push(client);
 	});
 
 	client.on("chat message", function(msg) {  
 		var user = people[client.id];
 		socket.sockets.in(user.room).emit("chat message", user, msg);
-	});
-
-	client.on("update passphrase", function(passphrase){
-		var user = people[client.id];
-		socket.sockets.in(user.room).emit("update passphrase", passphrase);
 	});
 
 	client.on("update username", function(username){
