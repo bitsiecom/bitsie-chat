@@ -1,1 +1,1 @@
-var bc = angular.module('bc', ['ngSanitize', 'ui.bootstrap']);
+var bc = angular.module('bc', ['ngSanitize']);
