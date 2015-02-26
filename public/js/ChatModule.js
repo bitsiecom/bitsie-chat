@@ -17,12 +17,6 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$wind
 		});
 	}); 
 
-	socket.on('update user', function(people){
-		$scope.$apply(function(){
-			$scope.people = people;
-		});
-	});
-
 	socket.on('chat message', function(user, message) {
 		var decrypted = bcrypt.decrypt(message, $scope.passphrase);
 		if (message && !decrypted) decrypted = '[unable to decrypt message -- verify passphrase]';
