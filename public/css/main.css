@@ -33,7 +33,14 @@ form { background: #000;
 	}
 form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
 form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages { 
+	position: fixed;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	height: 82%;
+	overflow: scroll;
+}
 #messages li { 
 	padding: 10px 10px;
 	background: #fff;
@@ -136,7 +143,7 @@ li.encryption.active {
 	background: rgba(0,0,0,.5);
 	text-align: center;
 	top: 0;
-		 display: none;
+	display: none;
 }
 
 .intro-modal {
@@ -155,7 +162,7 @@ li.encryption.active {
 	text-align: left;
 	margin-top: 25px;
 	border-radius: 5px;
-	 box-shadow: 0px 0px 5px #000;
+	box-shadow: 0px 0px 5px #000;
 }
 .intro-modal  h3 {
 	margin-bottom: 0;
@@ -186,7 +193,7 @@ li.encryption.active {
 	height: 100%;
 	display: block;
 	position: relative;
-	margin-top: 10%;
+	margin-top: 8%;
 }
 .intro-modal .right-side input{
 	margin-top: 5px;
