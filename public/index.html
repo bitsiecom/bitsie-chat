@@ -54,6 +54,24 @@
 		      	</div>
 		      </div>		      
 		    </form>
+
+		    <div class="intro-modal-container">
+			    <div class="intro-modal">
+				    <div class="modal-body">
+				      	<div class="col-xs-6 left-side">
+				      		<h3>Welcome to Bitsie Chat</h3>
+				        	<h4>Anonymous, encrypted chat <br/>in your browser</h4>
+				        	<p>Enter in a passphrase on the right to begin your chat session. Anyone with this passphrase, within your room, will be able to read your messages. If someone joins the room with a different passphrase, then they will be unable to read the chats or write to the others in the chat room. You can change the passphrase at any time with the Encryption menu accessed in the upper right hand menu.</p>
+				      	</div>
+				      	<div class="col-xs-6 right-side">
+				      		<input placeholder="Display Name" ng-model="username" class="intro-username form-control" value="{{username}}" />
+				      		<input placeholder="Encryption Passphrase" ng-model="passphrase" class="intro-passphrase form-control" value="{{passphrase}}" />
+				      		<button ng-click="startChat(passphrase, username)" class="passphrase-submit btn btn-success btn-block">Submit</button>
+				      	</div>
+				      	<div class="clearfix"></div>
+			      </div>
+		  		</div>
+	  		</div>
 	</div>
 
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -68,8 +86,6 @@
 	<script src="/js/services/websocket.js"></script>
 	<script src="/js/services/bcrypt.js"></script>
 	<script src="/js/services/room.js"></script>
-	<script src="/js/services/userInfo.js"></script>
-	<script src="/js/services/modal.js"></script>
 	<script src="/js/ChatModule.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 var bc = angular.module('bc');
 
-bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', 'userInfo', 'modalProvider', '$window', '$modal', '$log',
-	function($scope, room, bcrypt, websocket, userInfo, modalProvider, $window, $modal, $log) {
+bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$timeout', '$window', '$modal', '$log',
+	function($scope, room, bcrypt, websocket, $timeout, $window, $modal, $log) {
 
 	var socket = websocket();
 	$scope.messages = [];
@@ -48,24 +48,25 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', 'userI
 		$(this).toggleClass("active");
 	});
 
-	$scope.updatePassphrase = function(passphrase){
-		userInfo.setPassphrase(passphrase);
-		$scope.passphrase = passphrase;
-	};
+	$(".intro-modal-container").fadeIn();
 
-	modalProvider.openPopupModal("large");
-	 //open a modal when the user comes to the page to enter in the encryption passphrase
+
+	//modalProvider.openPopupModal("large");
+	$scope.startChat = function(passphraseInput, username){
+  		//pass the passphrase ander username into controller result on close
+  		var data = {"passphrase" : passphraseInput, "username": username};
+  		$timeout(function(){
+  			console.log("timeout");
+  			$scope.$apply(function(){
+  				console.log("going");
+  				$scope.passphrase = passphraseInput;
+  				socket.emit('update username', username);	
+  			});
+  		});
+  		$(".intro-modal-container").fadeOut();
+  	};
 
 }]);
 
 
-
- bc.controller('ModalInstanceController', function ($scope, $modalInstance) {
-  	$scope.startChat = function(passphraseInput, username){
-  		//pass the passphrase ander username into controller result on close
-  		var data = {"passphrase" : passphraseInput, "username": username};
-  		$modalInstance.close(data);
-  	};
-  	
-});
 

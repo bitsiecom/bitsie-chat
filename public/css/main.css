@@ -128,10 +128,18 @@ li.encryption.active {
 	line-height: 1.3em;
 	margin-bottom: 10px;
 }
-.intro-modal {
-	color: white;
+.intro-modal-container {
+	position: fixed;
+	z-index: 99999;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+	text-align: center;
+	top: 0;
+		 display: none;
 }
-.intro-modal .modal-content {
+
+.intro-modal {
 	font-family: "Montserrat", "Arial", sans-serif;
 	background: #f7931a; /* Old browsers */
 	background: -moz-linear-gradient(top,  #f7931a 0%, #f48200 100%); /* FF3.6+ */
@@ -141,32 +149,38 @@ li.encryption.active {
 	background: -ms-linear-gradient(top,  #f7931a 0%,#f48200 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #f7931a 0%,#f48200 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7931a', endColorstr='#f48200',GradientType=0 ); /* IE6-9 */
-	min-height: 100%;
+	width: 50%;
+	margin: 0 auto;
+	color: white;
+	text-align: left;
+	margin-top: 25px;
+	border-radius: 5px;
+	 box-shadow: 0px 0px 5px #000;
 }
-.intro-modal .modal-content h3 {
+.intro-modal  h3 {
 	margin-bottom: 0;
 	padding: 0;
 }
-.intro-modal .modal-content h4 {
+.intro-modal h4 {
 	margin: 5 0 25px 0;
 	padding: 0;
 	color: black;
 }
-.intro-modal .modal-content p {
+.intro-modal  p {
 	line-height: 1.3em;
 }
-.intro-modal .modal-content .modal-body {
+.intro-modal  .modal-body {
 	display: table;
 	-moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.intro-modal .modal-content .modal-body>div {
+.intro-modal  .modal-body>div {
 	display: table-cell;
 }
-.intro-modal .modal-content .left-side {
+.intro-modal .left-side {
 	border-right : 1px solid white;
 }
-.intro-modal .modal-content .right-side{
+.intro-modal  .right-side{
 	padding-top: 20px;
 	padding-bottom: 5px;
 	height: 100%;
@@ -174,9 +188,9 @@ li.encryption.active {
 	position: relative;
 	margin-top: 10%;
 }
-.intro-modal .modal-content .right-side input{
+.intro-modal .right-side input{
 	margin-top: 5px;
 }
-.intro-modal .modal-content .right-side button{
+.intro-modal  .right-side button{
 	margin-top: 5px;
 }
