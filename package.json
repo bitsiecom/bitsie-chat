@@ -23,6 +23,9 @@
     "node-uuid": "^1.4.2",
     "socket.io": "^1.3.4"
   },
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-bower-concat": "^0.4.0",
