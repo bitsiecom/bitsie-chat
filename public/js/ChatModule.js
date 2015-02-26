@@ -11,7 +11,7 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 
 	socket.emit('join', room.id);	
 
-	 socket.on('update passphrase', function(passphrase){
+	socket.on('update passphrase', function(passphrase){
 		$scope.$apply(function(){
 			$scope.passphrase = passphrase;
 		});
@@ -22,6 +22,8 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 		if (message && !decrypted) decrypted = '[unable to decrypt message -- verify passphrase]';
 		$scope.$apply(function(){
 			$scope.messages.push({user: user, message: decrypted});
+			var objDiv = document.getElementById("messages");
+			objDiv.scrollTop = objDiv.scrollHeight;
 		});
 	});
 

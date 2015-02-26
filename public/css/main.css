@@ -39,7 +39,8 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 	margin: 0;
 	padding: 0;
 	height: 82%;
-	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 #messages li { 
 	padding: 10px 10px;

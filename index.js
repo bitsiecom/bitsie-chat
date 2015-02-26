@@ -103,7 +103,11 @@ socket.on('connection', function(client) {
 	});
 
 	client.on("update username", function(username){
-		people[client.id].name = username;
+
+		if(username != ''){
+			people[client.id].name = username;	
+		};
+		
 		socket.sockets.emit("update people", people);
 		var roomId = people[client.id].room;
 		socket.sockets.in(roomId).emit("update", people[client.id], " is online.");
