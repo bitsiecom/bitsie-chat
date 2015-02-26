@@ -82,6 +82,7 @@ socket.on('connection', function(client) {
 			client.join(roomId); //auto-join the creator to the room
 			room.addPerson(client.id); //also add the person to the room object
 			people[client.id].room = roomId; //update the room key with the ID of the created room
+			console.log(people[client.id]);
 		} else {
 			// room does not exist
 			var room = new Room(roomId);
@@ -92,7 +93,6 @@ socket.on('connection', function(client) {
 		}
 		var host = server.address().address;
 		var port = server.address().port;
-		socket.sockets.in(roomId).emit("update", people[client.id], " is online.");
 		socket.sockets.in(roomId).emit("update people", people);
 		clients.push(client);
 	});
@@ -105,6 +105,8 @@ socket.on('connection', function(client) {
 	client.on("update username", function(username){
 		people[client.id].name = username;
 		socket.sockets.emit("update people", people);
+		var roomId = people[client.id].room;
+		socket.sockets.in(roomId).emit("update", people[client.id], " is online.");
 	});
 
 	client.on("disconnect", function() {  

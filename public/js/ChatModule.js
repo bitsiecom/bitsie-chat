@@ -9,7 +9,8 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 	$scope.passphrase = "";
 	$scope.username = "";
 
-	socket.emit('join', room.id);
+	socket.emit('join', room.id);	
+
 	 socket.on('update passphrase', function(passphrase){
 		$scope.$apply(function(){
 			$scope.passphrase = passphrase;
@@ -58,7 +59,7 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
   		$timeout(function(){
   			$scope.$apply(function(){
   				$scope.passphrase = passphraseInput;
-  				socket.emit('update username', username);	
+  				socket.emit('update username', username);
   			});
   		});
   		$(".intro-modal-container").fadeOut();
