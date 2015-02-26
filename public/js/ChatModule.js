@@ -1,7 +1,7 @@
 var bc = angular.module('bc');
 
-bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$timeout', '$window', '$modal', '$log',
-	function($scope, room, bcrypt, websocket, $timeout, $window, $modal, $log) {
+bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$timeout', '$window', '$log',
+	function($scope, room, bcrypt, websocket, $timeout, $window, $log) {
 
 	var socket = websocket();
 	$scope.messages = [];
@@ -56,9 +56,7 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
   		//pass the passphrase ander username into controller result on close
   		var data = {"passphrase" : passphraseInput, "username": username};
   		$timeout(function(){
-  			console.log("timeout");
   			$scope.$apply(function(){
-  				console.log("going");
   				$scope.passphrase = passphraseInput;
   				socket.emit('update username', username);	
   			});
