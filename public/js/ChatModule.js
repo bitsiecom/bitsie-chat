@@ -3,7 +3,6 @@ var bc = angular.module('bc');
 bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$window', '$modal', '$log',
 	function($scope, room, bcrypt, websocket, $window, $modal, $log) {
 
-
 	var socket = websocket();
 	$scope.messages = [];
 	$scope.people = [];
@@ -70,6 +69,8 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$wind
 	    	socket.emit("update username", data.username);
 	    	socket.emit("update passphrase", data.passphrase);
 	    }, function () {
+	    	socket.emit("update passphrase", "");
+	    	$('.modal-backdrop').hide();
 	      $log.info('Modal dismissed at: ' + new Date());
 	    });
 	  };
@@ -86,6 +87,8 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$wind
   		//pass the passphrase ander username into controller result on close
   		$modalInstance.close(data);
   	};
+
+  	$scope.dismiss
   	
 });
 
