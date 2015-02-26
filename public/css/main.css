@@ -61,6 +61,10 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 	margin-bottom: 0;
 	background-position: 0px 0px;
 }
+
+.navbar-default .navbar-collapse{
+	background: none;
+}
 .navbar .navbar-brand {
 	font-family: 'Montserrat Bold', sans-serif;	
 	font-weight: bold;
@@ -69,9 +73,7 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 	display: block;
 	margin-top: 5px;
 }
-.navbar-default .navbar-collapse {
-	background: black;
-}
+
 .navbar .navbar-brand span {
 	color: white;
 	margin-right: 35px;
@@ -215,7 +217,9 @@ li.encryption.active {
 .intro-modal  .right-side button{
 	margin-top: 5px;
 }
-
+.navbar-right {
+	background:black;
+}
 .subnav-button {
 	right: 15px;
 	top: 8px;
