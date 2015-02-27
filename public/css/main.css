@@ -159,7 +159,6 @@ li.encryption.active {
 	background: rgba(0,0,0,.5);
 	text-align: center;
 	top: 0;
-	display: none;
 }
 
 .intro-modal {
@@ -223,4 +222,27 @@ li.encryption.active {
 .subnav-button {
 	right: 15px;
 	top: 8px;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.fadein {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  opacity: 1; /* Default value but added for clarity */
+}
+
+/* Initial state when showing */
+.fadein.ng-hide-remove {
+  opacity: 0;
+  display: block !important;
+}
+
+/* Will transition towards this state */
+.fadein.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
 }

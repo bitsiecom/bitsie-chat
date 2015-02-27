@@ -5,9 +5,8 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 <title>Bitsie Chat</title>
-<link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/dist/style/_bower.css" />
 <link href='/css/font-droid.css' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/main.css" />
 
 </head>
@@ -51,15 +50,15 @@
 		    <form id="form-chat" class="form" action="">
 		      <div class="form-group">
 		      	<div class="col-xs-8 col-md-10">
-		      		<input id="m" class="form-control" autocomplete="off" />
+		      		<input id="m" class="form-control" autocomplete="off" ng-model="message" />
 		      	</div>
 		      	<div class="col-xs-4 col-md-2">
-		      		<button class="btn btn-success btn-block">Send</button>
+		      		<button class="btn btn-success btn-block" ng-click="sendMessage()">Send</button>
 		      	</div>
 		      </div>		      
 		    </form>
 
-		    <div class="intro-modal-container">
+		    <div class="intro-modal-container fadein" ng-show="showModal" ng-cloak>
 			    <div class="intro-modal">
 				    <div class="modal-body">
 				      	<div class="col-xs-6 left-side">
@@ -78,10 +77,7 @@
 	  		</div>
 	</div>
 
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="/dist/js/_bower.js"></script>
     <script src="/js/aes.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 

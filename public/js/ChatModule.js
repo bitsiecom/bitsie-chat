@@ -40,20 +40,11 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 		});
 	});
 
-	$('#form-chat').submit(function(e) {
-		e.preventDefault();
-		var msg = bcrypt.encrypt($('#m').val(), $scope.passphrase);
+	$scope.sendMessage = function() {
+		var msg = bcrypt.encrypt($scope.message, $scope.passphrase);
 		socket.emit('chat message', msg);
-		$('#m').val('');
-	});
-
-	$(".encryption").click(function(e){
-		e.preventDefault();
-		$(this).toggleClass("active");
-	});
-
-	$(".intro-modal-container").fadeIn();
-
+		$scope.message = "";
+	};
 
 	//modalProvider.openPopupModal("large");
 	$scope.startChat = function(passphraseInput, username){
@@ -68,6 +59,12 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
   		$(".intro-modal-container").fadeOut();
   	};
 
+	$timeout(function(){
+		$scope.$apply(function(){
+			$scope.showModal =  true;
+		});
+	});
+	
 }]);
 
 
