@@ -4,6 +4,7 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 	function($scope, room, bcrypt, websocket, $timeout, $window, $log) {
 
 	var socket = websocket();
+
 	$scope.messages = [];
 	$scope.people = [];
 	$scope.passphrase = "";
@@ -42,9 +43,11 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 	});
 
 	$scope.sendMessage = function() {
-		var msg = bcrypt.encrypt($scope.message, $scope.passphrase);
-		socket.emit('chat message', msg);
-		$scope.message = "";
+		if($scope.message){
+			var msg = bcrypt.encrypt($scope.message, $scope.passphrase);
+			socket.emit('chat message', msg);
+		}
+		$scope.message = "";	
 	};
 
 	//modalProvider.openPopupModal("large");
@@ -65,6 +68,8 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 			$scope.showModal =  true;
 		});
 	});
+
+	
 	
 }]);
 
