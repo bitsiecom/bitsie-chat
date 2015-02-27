@@ -95,6 +95,8 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 	padding-right: 2px;
 	padding-left: 2px;
 }
+
+
 .message-container {
 }
 .btn {
@@ -249,3 +251,11 @@ button.navbar-toggle {
 	color: white;
 	margin-top: 0;
 }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	.navbar .navbar-right li.person { 
+    display:none;
+  }
+}
+
