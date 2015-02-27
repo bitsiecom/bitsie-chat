@@ -20,8 +20,13 @@ function errorHandler(err, req, res, next) {
 app.use(errorHandler);
 
 
-
 //-------- ACTIONS ----------------
+
+var names = Moniker.generator([Moniker.adjective, Moniker.verb, Moniker.noun], { glue: ' ' });
+var people = {};
+var rooms = [];
+var clients = [];
+
 function getColor() {
 
 	var H = Math.floor(Math.random()*255).toString();
@@ -34,10 +39,14 @@ function getColor() {
 	return "hsla(" + H + "," + S + "%," + L + "%," + a + ")";
 }
 
-var names = Moniker.generator([Moniker.adjective, Moniker.verb, Moniker.noun], { glue: ' ' });
-var people = {};
-var rooms = [];
-var clients = [];
+function getPeopleInRoom(roomId) {
+	var roomPeople = {};
+	for(var p in people) {
+		if (people[p].room == roomId) roomPeople[p] = people[p];
+	}
+	return roomPeople;
+}
+
 Array.prototype.contains = function(k, callback) {  
     var self = this;
 	return (function check(i) {
@@ -92,7 +101,9 @@ socket.on('connection', function(client) {
 		}
 		var host = server.address().address;
 		var port = server.address().port;
-		socket.sockets.in(roomId).emit("update people", people);
+
+		var roomPeople = getPeopleInRoom(roomId)
+		socket.sockets.in(roomId).emit("update people", roomPeople);
 		clients.push(client);
 	});
 
@@ -103,20 +114,26 @@ socket.on('connection', function(client) {
 
 	client.on("update username", function(username){
 
-		if(username != ''){
+		if (username != ''){
 			people[client.id].name = username;	
 		};
-		
-		socket.sockets.emit("update people", people);
+
 		var roomId = people[client.id].room;
+		var roomPeople = getPeopleInRoom(roomId)
+		socket.sockets.in(roomId).emit("update people", roomPeople);
 		socket.sockets.in(roomId).emit("update", people[client.id], " is online.");
 	});
 
 	client.on("disconnect", function() {  
+		var roomId = people[client.id].room;
+
 		if (people[client.id] == null) return;
 		socket.sockets.in(people[client.id].room).emit("update", people[client.id], " has left the chat.");
 		delete people[client.id];
-		socket.sockets.emit("update people", people);
+
+		var roomPeople = getPeopleInRoom(roomId)
+		socket.sockets.in(roomId).emit("update people", roomPeople);
+
 	});
 });
 
