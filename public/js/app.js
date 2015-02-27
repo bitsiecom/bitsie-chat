@@ -1,1 +1,1 @@
-var bc = angular.module('bc', ['ngSanitize']);
+var bc = angular.module('bc', ['ngSanitize', 'ngAnimate']);

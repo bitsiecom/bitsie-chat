@@ -82,7 +82,6 @@ socket.on('connection', function(client) {
 			client.join(roomId); //auto-join the creator to the room
 			room.addPerson(client.id); //also add the person to the room object
 			people[client.id].room = roomId; //update the room key with the ID of the created room
-			console.log(people[client.id]);
 		} else {
 			// room does not exist
 			var room = new Room(roomId);

@@ -22,9 +22,10 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 		if (message && !decrypted) decrypted = '[unable to decrypt message -- verify passphrase]';
 		$scope.$apply(function(){
 			$scope.messages.push({user: user, message: decrypted});
-			var messageBox = document.getElementById("messages");
-			var isScrolledToBottom = messageBox.scrollHeight - messageBox.clientHeight <= messageBox.scrollTop + 1;
-    		messageBox.scrollTop = messageBox.scrollHeight - messageBox.clientHeight;
+			$timeout(function(){
+				var messageBox = $("#messages");
+				messageBox.scrollTop(messageBox.prop("scrollHeight"));
+			});
 		});
 	});
 
@@ -40,20 +41,11 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 		});
 	});
 
-	$('#form-chat').submit(function(e) {
-		e.preventDefault();
-		var msg = bcrypt.encrypt($('#m').val(), $scope.passphrase);
+	$scope.sendMessage = function() {
+		var msg = bcrypt.encrypt($scope.message, $scope.passphrase);
 		socket.emit('chat message', msg);
-		$('#m').val('');
-	});
-
-	$(".encryption").click(function(e){
-		e.preventDefault();
-		$(this).toggleClass("active");
-	});
-
-	$(".intro-modal-container").fadeIn();
-
+		$scope.message = "";
+	};
 
 	//modalProvider.openPopupModal("large");
 	$scope.startChat = function(passphraseInput, username){
@@ -68,6 +60,12 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
   		$(".intro-modal-container").fadeOut();
   	};
 
+	$timeout(function(){
+		$scope.$apply(function(){
+			$scope.showModal =  true;
+		});
+	});
+	
 }]);
 
 

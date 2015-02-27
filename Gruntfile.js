@@ -32,14 +32,7 @@ module.exports = function(grunt) {
 		watch: {
 			js : {
 				files: ['public/js/**/*.js'],
-				tasks: ['jshint', 'uglify'],
-				options: {
-					spawn: false,
-				}
-			},
-			css : {
-				files: ['public/css/**/*'],
-				tasks: ['sass'],
+				tasks: ['jshint'],
 				options: {
 					spawn: false,
 				}
@@ -74,7 +67,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-concurrent');
 	grunt.loadNpmTasks('grunt-karma');
 	
-	grunt.registerTask('default', ['jshint', 'concurrent']);
+	grunt.registerTask('default', ['jshint', 'bower_concat', 'concurrent']);
 	grunt.registerTask('test-unit', ['jshint', 'karma']);
 
 };

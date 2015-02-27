@@ -24,7 +24,7 @@ display: block;
 }
 
 body { font: 13px Helvetica, Arial; }
-form { background: #000; 
+#form-chat { background: #000; 
 	   padding: 10px 0 10px 0px; 
 	   position: fixed; 
 	   bottom: 0; 
@@ -165,6 +165,12 @@ li.encryption.active {
 	background: linear-gradient(to bottom,  #f7931a 0%,#f48200 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7931a', endColorstr='#f48200',GradientType=0 ); /* IE6-9 */
 	text-align: center;
+	top: 0;
+}
+
+.intro-modal {
+	font-family: "Montserrat", "Arial", sans-serif;
+	text-align: center;
 }
 
 .intro-modal {
@@ -214,4 +220,27 @@ li.encryption.active {
 .subnav-button {
 	right: 15px;
 	top: 8px;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.fadein {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  opacity: 1; /* Default value but added for clarity */
+}
+
+/* Initial state when showing */
+.fadein.ng-hide-remove {
+  opacity: 0;
+  display: block !important;
+}
+
+/* Will transition towards this state */
+.fadein.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
 }
