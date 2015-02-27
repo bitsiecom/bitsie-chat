@@ -33,10 +33,10 @@
 			<div class="encryption-menu menu-dropdown" ng-hide="!custom" ng-cloak>
 				<h4>ENCRYPTION</h4>
 				<p>Enter in a passphrase on the right to begin your chat session. Anyone with this passphrase, within your room, will be able to read your messages. If someone joins the room with a different passphrase, then they will be unable to read the chats or write to the others in the chat room. You can change the passphrase at any time with the Encryption menu accessed in the upper right hand menu.</p>
-				<div class="form-group">
+				<form class="form-group" ng-submit="updatePassphrase('test'); custom=!custom" >
 					<input class="form-control passphrase-input" ng-model="passphrase" value="{{passphrase}}"/>
-					<button ng-click="updatePassphrase('test'); custom=!custom" class="encryption-submit btn btn-success btn-block"> SUBMIT</button>
-				</div>
+					<button class="encryption-submit btn btn-success btn-block"> SUBMIT</button>
+				</form>
 			</div>
 
 		    <ul id="messages" class="col-xs-12">
@@ -47,13 +47,13 @@
 		    		<span class="clearfix"></span>
 		    	</li>
 		    </ul>
-		    <form id="form-chat" class="form" action="">
+		    <form id="form-chat" class="form" action="" ng-submit="sendMessage()">
 		      <div class="form-group">
 		      	<div class="col-xs-8 col-md-10">
 		      		<input id="m" class="form-control" autocomplete="off" ng-model="message" />
 		      	</div>
 		      	<div class="col-xs-4 col-md-2">
-		      		<button class="btn btn-success btn-block" ng-click="sendMessage()">Send</button>
+		      		<button class="btn btn-success btn-block">Send</button>
 		      	</div>
 		      </div>		      
 		    </form>
@@ -66,10 +66,10 @@
 				        	<h4>Anonymous, encrypted chat <br/>in your browser</h4>
 				        	<p>Enter in a passphrase on the right to begin your chat session. Anyone with this passphrase, within your room, will be able to read your messages. If someone joins the room with a different passphrase, then they will be unable to read the chats or write to the others in the chat room. You can change the passphrase at any time with the Encryption menu accessed in the upper right hand menu.</p>
 				      	</div>
-				      	<div class="col-xs-6 right-side">
+				      	<form ng-submit="startChat(passphrase, username)" class="col-xs-6 right-side">
 				      		<input placeholder="Display Name" ng-model="username" class="intro-username form-control" value="{{username}}" ng-cloak/>
 				      		<input placeholder="Encryption Passphrase" ng-model="passphrase" class="intro-passphrase form-control" value="{{passphrase}}" ng-cloak/>
-				      		<button ng-click="startChat(passphrase, username)" class="passphrase-submit btn btn-success btn-block" >Submit</button>
+				      		<button class="passphrase-submit btn btn-success btn-block" >Submit</button>
 				      	</div>
 				      	<div class="clearfix"></div>
 			      </div>

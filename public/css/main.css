@@ -24,7 +24,7 @@ display: block;
 }
 
 body { font: 13px Helvetica, Arial; }
-form { background: #000; 
+#form-chat { background: #000; 
 	   padding: 10px 0 10px 0px; 
 	   position: fixed; 
 	   bottom: 0; 
