@@ -36,7 +36,6 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 	});
 
 	socket.on('update people', function(people) {
-		console.log(people);
 		$scope.$apply(function(){
 			$scope.people = people;	
 		});
