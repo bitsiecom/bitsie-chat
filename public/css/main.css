@@ -165,7 +165,7 @@ li.encryption.active {
 	background: linear-gradient(to bottom,  #f7931a 0%,#f48200 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7931a', endColorstr='#f48200',GradientType=0 ); /* IE6-9 */
 	text-align: center;
-	top: 59px;
+	top: 55px;
 }
 
 .intro-modal {
