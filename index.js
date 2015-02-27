@@ -125,9 +125,9 @@ socket.on('connection', function(client) {
 	});
 
 	client.on("disconnect", function() {  
+		if (people[client.id] == null) return;
 		var roomId = people[client.id].room;
 
-		if (people[client.id] == null) return;
 		socket.sockets.in(people[client.id].room).emit("update", people[client.id], " has left the chat.");
 		delete people[client.id];
 
