@@ -165,7 +165,7 @@ li.encryption.active {
 	background: linear-gradient(to bottom,  #f7931a 0%,#f48200 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7931a', endColorstr='#f48200',GradientType=0 ); /* IE6-9 */
 	text-align: center;
-	top: 0;
+	top: 59px;
 }
 
 .intro-modal {
@@ -178,7 +178,6 @@ li.encryption.active {
 	margin: 0 auto;
 	color: white;
 	text-align: left;
-	margin-top: 25px;
 }
 .intro-modal  h3 {
 	margin-bottom: 0;
@@ -243,4 +242,10 @@ li.encryption.active {
 /* Will transition towards this state */
 .fadein.ng-hide-remove.ng-hide-remove-active {
   opacity: 1;
+}
+
+button.navbar-toggle {
+	border: none;
+	color: white;
+	margin-top: 0;
 }
