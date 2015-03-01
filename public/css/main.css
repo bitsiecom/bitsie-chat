@@ -39,7 +39,6 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 	padding: 0;
 	height: 80%;
 	min-height: 80%;
-	position: absolute;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
