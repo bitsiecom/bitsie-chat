@@ -257,6 +257,20 @@ button.navbar-toggle {
 	.navbar .navbar-right li.person { 
     display:none;
   }
+
+  .encryption-menu {
+	background: #333;
+	position: absolute;
+	width: 100%;
+	right: 0;
+	top: 59px;
+	padding: 10px;
+	z-index: 9999;
+	color: white;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-left-radius: 5px;
+	}
 }
 
 
