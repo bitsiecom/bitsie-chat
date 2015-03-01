@@ -61,6 +61,8 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
   			});
   		});
   		$(".intro-modal-container").fadeOut();
+  		$("body").css("background", "white")
+  		$("#form-chat").fadeIn();
   	};
 
 	$timeout(function(){
