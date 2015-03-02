@@ -10,11 +10,19 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
 	$scope.passphrase = "";
 	$scope.username = "";
 
+
 	socket.emit('join', room.id);	
 
 	socket.on('update passphrase', function(passphrase){
 		$scope.$apply(function(){
 			$scope.passphrase = passphrase;
+		});
+	}); 
+
+	socket.on('start name', function(name){
+		console.log(name);
+		$scope.$apply(function(){
+			$scope.username = name;
 		});
 	}); 
 
@@ -61,7 +69,7 @@ bc.controller('ChatController', ['$scope', 'room', 'bcrypt', 'websocket', '$time
   			});
   		});
   		$(".intro-modal-container").fadeOut();
-  		$("body").css("background", "white")
+  		$("body").css("background", "white");
   		$("#form-chat").fadeIn();
   	};
 

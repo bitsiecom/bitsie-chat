@@ -181,40 +181,49 @@ li.encryption.active {
 	color: white;
 	text-align: left;
 }
-.intro-modal  h3 {
+.intro-modal  h2 {
 	margin-bottom: 0;
 	padding: 0;
+	color: white;
 }
-.intro-modal h4 {
-	margin: 5 0 25px 0;
+html body .intro-modal h4 {
+	margin: 5 0 0px 0;
 	padding: 0;
+	margin-bottom: 3px;
 	color: black;
+}
+.intro-modal small {
+	margin-bottom: 5px;
+	font-style: italic;
+}
+.intro-modal .fa-black{
+	margin: 0 auto;
+	margin-top: 10px;
+	color: #000;
 }
 .intro-modal  p {
 	line-height: 1.3em;
 }
-
-
-.intro-modal .left-side {
-	
+.intro-modal .logo{
+	margin-bottom: 20px;
 }
-.intro-modal .left-side p {
-	text-align: justify;
+.intro-modal .intro-group {
+	margin-top: 10px;
 }
-.intro-modal  .right-side{
-	padding-top: 20px;
-	padding-bottom: 5px;
-	height: 100%;
-	display: block;
-	position: relative;
-	margin-top: 8%;
+.intro-modal .intro-group.last {
+	margin-bottom: 20px;
 }
 .intro-modal input{
 	margin-top: 5px;
 }
 .intro-modal button{
-	margin-top: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
+.intro-modal .share-text {
+	margin: 5px 0 20px 0;
+}
+
 .navbar-right {
 	background:black;
 }
@@ -271,6 +280,13 @@ button.navbar-toggle {
 	-moz-border-radius-bottomleft: 5px;
 	border-bottom-left-radius: 5px;
 	}
+
+	.intro-modal .logo {
+		display: none;
+	}
 }
+
+
+
 
 
