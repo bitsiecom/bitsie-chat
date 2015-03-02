@@ -5,7 +5,8 @@ var express = require('express'),
 	Moniker = require('moniker'),
 	path = require('path'),
 	Room = require('./lib/room.js'),
-	uuid = require('node-uuid');
+	uuid = require('node-uuid'),
+	env = process.env.NODE_ENV || 'development';
 
 app.set('port', (process.env.PORT || 5000))
 app.set("view options", {layout: false});
@@ -13,12 +14,26 @@ app.set('views', __dirname + '/public');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
+ var forceSsl = function (req, res, next) {
+ 	console.log("ROCE SSSL");
+	if (req.headers['x-forwarded-proto'] !== 'https') {
+ 	console.log("REDIRECTION SSSL");
+		return res.redirect(['https://', req.get('Host'), req.url].join(''));
+	}
+	return next();
+ };
+
+if (env === 'production') {
+	app.use(forceSsl);
+} else {
+	console.log(env);
+}
+
 function errorHandler(err, req, res, next) {
 	res.status(500);
 	res.render('error', { error: err });
 }
 app.use(errorHandler);
-
 
 //-------- ACTIONS ----------------
 
@@ -61,7 +76,7 @@ Array.prototype.contains = function(k, callback) {
 };
 
 app.get('/:id?', function (req, res) {
-	res.render('index.html');
+	res.sendFile(__dirname + '/public/views/index.html');
 })
 
 socket.on('connection', function(client) {
