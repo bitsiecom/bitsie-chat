@@ -6,6 +6,7 @@ var express = require('express'),
 	path = require('path'),
 	Room = require('./lib/room.js'),
 	uuid = require('node-uuid'),
+	mongoose = require('mongoose'),
 	env = process.env.NODE_ENV || 'development';
 
 app.set('port', (process.env.PORT || 5000))
@@ -34,6 +35,14 @@ function errorHandler(err, req, res, next) {
 	res.render('error', { error: err });
 }
 app.use(errorHandler);
+app.get('/register', function (req, res) {
+	res.sendFile(__dirname + '/public/views/register.html');
+});
+
+//-------- MONGO ------------------
+
+require('./models/Users');
+mongoose.connect('mongodb://localhost/users');
 
 //-------- ACTIONS ----------------
 
@@ -77,8 +86,7 @@ Array.prototype.contains = function(k, callback) {
 
 app.get('/:id?', function (req, res) {
 	res.sendFile(__dirname + '/public/views/index.html');
-})
-
+});
 socket.on('connection', function(client) {
 
 	// user has connected, give them a name
